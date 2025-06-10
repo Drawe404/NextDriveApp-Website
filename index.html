@@ -1,0 +1,108 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driving School App</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      overflow-x: hidden;
+      background: #0a0a0a;
+      color: white;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      padding: 1rem 2rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .background-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 80%);
+      border-radius: 50%;
+      filter: blur(50px);
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-cursor"></div>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Plan smarter.</h1>
+      <p>Grow your business. Stay in control.</p>
+    </section>
+  </main>
+
+  <script>
+    const cursor = document.querySelector('.background-cursor');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+    });
+
+    document.querySelectorAll('a, h1, p').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '300px';
+        cursor.style.height = '300px';
+      });
+
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '200px';
+        cursor.style.height = '200px';
+      });
+    });
+  </script>
+</body>
+</html>
