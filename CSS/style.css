@@ -8,6 +8,12 @@ body {
   background-color: #e0e0db;
 }
 
+.controls {
+	position: fixed;
+	top: 2rem;
+	right: 2rem;
+}
+
 img {
   max-width: 100%;
 }
@@ -29,7 +35,10 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 5%;
+  padding-top: 55px;
+  padding-bottom: 32px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .logo {
@@ -48,6 +57,7 @@ img {
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.3s;
+  font-size:larger;
 }
 
 .nav-links a:hover {
@@ -62,7 +72,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #415573;
+  color: #000000;
   text-decoration: none;
   font-weight: bold;
 }
@@ -76,6 +86,7 @@ img {
   text-align: center;
   padding: 0 5%;
   z-index: 1;
+  padding-bottom: 240px;
 }
 
 .hero h1 {
@@ -88,12 +99,14 @@ img {
 .hero-subtitle {
   font-size: 1.2rem;
   margin-bottom: 3rem;
-  font-weight: bold;
+  font-weight: 600;
+  white-space: pre;
+  letter-spacing: 0.05em;
 }
 
 .cta-button {
   background: #e0e0db;
-  color: #000000;
+  color: #2a2829;
   padding: 1rem 2.5rem;
   border: none;
   border-radius: 50px;
@@ -123,6 +136,7 @@ img {
 
 .container {
   max-width: 1200px;
+  /*max-height: fit-content;*/
   margin: 0 auto;
   padding: 0 5%;
 }
@@ -132,6 +146,7 @@ img {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5rem;
+  height: 50vh;
 }
 
 .services h2 {
@@ -141,16 +156,17 @@ img {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  color: #2a2829;
 }
 
 .services .faq-container {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  color: #2a2829;
+  overflow: hidden;
 }
 
 .service-item {
-  border-bottom: 2px solid #ccc;
   margin-bottom: 1rem;
 }
 
@@ -160,38 +176,57 @@ img {
   justify-content: space-between;
   padding: 1rem 0;
 
-  border-bottom: 1px solid #2a2829;
+  /* border-bottom: 1px solid #2a2829; */
   font-weight: bold;
 }
 .border-custom {
   border-top: 1px solid #2a2829;
 }
 
+.border-b-custom {
+  border-bottom: 1px solid #2a2829;
+}
+
 .plus-width {
   width: 1.25rem;
 }
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+.service-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.service-toggle img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
 .service-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-
-  padding: 0 1rem;
-  font-size: 0.95rem;
-  color: #2a2829;
+  opacity: 0;
+  padding: 0 20px;
+  transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
 }
 
 .service-item.active .service-content {
-  max-height: 300px; /* enough to fit content */
-  padding: 1rem;
+  max-height: 300px; /* adjust based on content size */
+  opacity: 1;
+  padding: 20px;
 }
 
-.service-toggle {
-  font-size: 1.2rem;
-  transition: transform 0.3s;
-}
-
-.service-item.active .service-toggle {
-  transform: rotate(45deg); /* turns + into × */
+.service-item.active .service-toggle img {
+  transform: rotate(45deg); /* Rotates plus icon */
 }
 .service-header:hover {
   color: #415573;
@@ -208,18 +243,26 @@ img {
 }
 
 /* Story Section */
+
+.story-wrapper {
+  position: relative;
+  width: 100%;
+  left: -100px;
+
+}
+
 .story {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  margin-bottom: 5rem;
+  gap: 13rem;
+  margin-bottom: 150px;
+  
 }
 
 .story-image {
   width: 100%;
-  /* height: 500px; */
-  border-radius: 10px;
+  height: 600px;
+  border-radius: 15px;
   object-fit: cover;
 }
 
@@ -243,20 +286,82 @@ img {
   color: #2a2829;
 }
 
-.more-button {
-  background: #415573;
-  color: white;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s;
+:root {
+	--x: 0;
+	--y: 0;
+	--xp: 0;
+	--yp: 0;
+	--hue: calc(0 + (var(--xp) * 500));
+	--bg: #e0e0db;
+	--size: 100px;
+	--glow: radial-gradient(50% 50% at center,
+		hsl(var(--hue) 80% 85%),
+		hsl(var(--hue) 80% 70%),
+		transparent)
+		calc((var(--x) * 1px) - (var(--size) * 0.5))
+		calc((var(--y) * 1px) - (var(--size) * 0.5))
+		/ var(--size) var(--size) no-repeat fixed;
 }
 
-.more-button:hover {
-  background: #34495e;
+.more-button {
+	border-radius: 1rem;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 0.1ch;
+	background: var(--bg);
+	border: 4px solid transparent;
+	box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
+	cursor: pointer;
+	background:
+		linear-gradient(var(--bg), var(--bg)) padding-box,
+		var(--glow),
+		linear-gradient(black, black) border-box;
+	transition: background-size 0.24s;
+	touch-action: none;
+	position: relative;
+	padding: 1rem 2rem;
 }
+
+/* Button glow effect when active */
+.more-button:active {
+	--size: 300px;
+}
+
+/* Inner overlay layer */
+.more-button::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
+	background: var(--bg);
+	z-index: 2;
+	border-radius: 1rem;
+}
+
+/* Glowing text effect */
+.more-button span {
+	background: var(--glow), black;
+	background-clip: text;
+	color: transparent;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	position: relative;
+	inset: 0;
+	display: inline-block;
+}
+
+/* Outer blurred border glow */
+.more-button::after {
+	content: "";
+	position: absolute;
+	inset: -4px;
+	filter: blur(20px);
+	border: 4px solid transparent;
+	background: var(--glow);
+	border-radius: 1rem;
+}
+
 
 /* Contact Section */
 .contact {
@@ -264,12 +369,14 @@ img {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   margin-bottom: 3rem;
+  margin-top: 150px;
 }
 
 .contact-info h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   font-weight: bold;
+  color: #2a2829;
 }
 
 .contact-info p {
@@ -335,6 +442,123 @@ textarea {
   align-items: center;
 }
 
+.send-button {
+  position: relative;
+  padding: 0.75rem 2.5rem;
+  background: #e0e0db;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  box-shadow: 0px 0px 10px 0px #2a2829;
+  border-radius: 100px;
+  border: line-width 3px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.send-button.clicked-once:hover {
+  background: #000000;
+  color: #ffffff;
+  box-shadow: 0 0 80px #ffffff8c;
+}
+
+.star-1,
+.star-2,
+.star-3,
+.star-4,
+.star-5,
+.star-6 {
+  position: absolute;
+  z-index: -5;
+  filter: drop-shadow(0 0 0 #2a2829);
+  transition: all 0.8s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+}
+
+.send-button .star-1 {
+  top: 20%;
+  left: 20%;
+  width: 25px;
+}
+
+.send-button .star-2 {
+  top: 45%;
+  left: 45%;
+  width: 15px;
+}
+
+.send-button .star-3 {
+  top: 40%;
+  left: 40%;
+  width: 5px;
+}
+
+.send-button .star-4 {
+  top: 20%;
+  left: 40%;
+  width: 8px;
+}
+
+.send-button .star-5 {
+  top: 25%;
+  left: 45%;
+  width: 15px;
+}
+
+.send-button .star-6 {
+  top: 5%;
+  left: 50%;
+  width: 5px;
+}
+
+/* Hover stars only activate after clicked-once */
+.send-button.clicked-once:hover .star-1 {
+  top: -20%;
+  left: -20%;
+  filter: drop-shadow(0 0 10px #2a2829);
+  z-index: 2;
+}
+
+.send-button.clicked-once:hover .star-2 {
+  top: 35%;
+  left: -25%;
+  filter: drop-shadow(0 0 10px #2a2829);
+  z-index: 2;
+}
+
+.send-button.clicked-once:hover .star-3 {
+  top: 80%;
+  left: -10%;
+  filter: drop-shadow(0 0 10px #2a2829);
+  z-index: 2;
+}
+
+.send-button.clicked-once:hover .star-4 {
+  top: -25%;
+  left: 105%;
+  filter: drop-shadow(0 0 10px #2a2829);
+  z-index: 2;
+}
+
+.send-button.clicked-once:hover .star-5 {
+  top: 30%;
+  left: 115%;
+  filter: drop-shadow(0 0 10px #2a2829);
+  z-index: 2;
+}
+
+.send-button.clicked-once:hover .star-6 {
+  top: 80%;
+  left: 105%;
+  filter: drop-shadow(0 0 10px #2a2829);
+  z-index: 2;
+}
+
+.fil0 {
+  fill: #2a2829;
+}
+
+
+/*
 .submit-button {
   background: #415573;
   color: white;
@@ -350,7 +574,7 @@ textarea {
 .submit-button:hover {
   background: #34495e;
 }
-
+*/
 .reply-note {
   font-size: 0.9rem;
   color: #2a2829;
@@ -369,10 +593,20 @@ textarea {
   font-weight: bold;
 }
 
+.slide-text {
+  width: 100%;
+  padding: 1.2em 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  white-space: pre;
+}
+
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 3.5rem;
   flex-wrap: wrap;
 }
 
@@ -497,7 +731,9 @@ textarea {
     align-items: center;
     gap: 4rem;
   }
-
+  .services {
+    height: auto;
+  }
   .hero {
     min-height: auto;
     padding-bottom: 2rem;
@@ -1000,8 +1236,8 @@ textarea {
   }
 }
 #dot-cursor {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   position: fixed;
   top: 0;
   left: 0;

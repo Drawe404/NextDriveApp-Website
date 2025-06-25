@@ -23,8 +23,9 @@ document.querySelectorAll(".service-header").forEach((header) => {
     document
       .querySelectorAll(".service-item")
       .forEach((i) => i.classList.remove("active"));
+    item.classList.add("border-b-custom");
 
-    // Toggle current
+    // Open if not already active
     if (!isActive) {
       item.classList.add("active");
     }
@@ -39,12 +40,13 @@ document
   });
 
 const dot = document.getElementById("dot-cursor");
+const hero = document.getElementById("hero"); // Make sure your hero section has this ID
 
 let mouseX = 0,
   mouseY = 0;
 let dotX = 0,
   dotY = 0;
-const speed = 0.03; // Lower is slower, smoother
+const speed = 0.02;
 
 function animate() {
   dotX += (mouseX - dotX) * speed;
@@ -54,9 +56,38 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-document.addEventListener("mousemove", (e) => {
+hero.addEventListener("mousemove", (e) => {
+  const rect = hero.getBoundingClientRect();
   mouseX = e.clientX;
   mouseY = e.clientY;
+  dot.style.display = "block"; // Show the dot only inside hero
 });
 
+hero.addEventListener("mouseleave", () => {
+  dot.style.display = "none"; // Hide when leaving the hero
+});
+
+// Start animation
 animate();
+
+let elt = document.querySelectorAll(".slide-text > *");
+
+anime({
+  targets: elt,
+  translateX: "-100%",
+  duration: 12000,
+  easing: "linear",
+  loop: true,
+});
+
+const syncPointer = ({ x: pointerX, y: pointerY }) => {
+	const x = pointerX.toFixed(2)
+	const y = pointerY.toFixed(2)
+	const xp = (pointerX / window.innerWidth).toFixed(2)
+	const yp = (pointerY / window.innerHeight).toFixed(2)
+	document.documentElement.style.setProperty('--x', x)
+	document.documentElement.style.setProperty('--xp', xp)
+	document.documentElement.style.setProperty('--y', y)
+	document.documentElement.style.setProperty('--yp', yp)
+}
+document.body.addEventListener('pointermove', syncPointer)

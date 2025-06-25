@@ -7,13 +7,14 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
     <link rel="stylesheet" href="./CSS/style.css" />
     <title>NextDrive - Drive Smarter</title>
   </head>
   <body>
     <!-- Hero Section -->
-    <div class="hero">
+    <div class="hero" id="hero">
       <nav class="nav">
         <div class="logo">NextDrive</div>
         <div class="nav-links">
@@ -29,7 +30,7 @@
 
       <div class="hero-content">
         <h1>Drive Smarter</h1>
-        <p class="hero-subtitle">Plan better. Grow faster. Stay in control.</p>
+        <p class="hero-subtitle" style="white-space: pre;">Plan better.    Grow faster.    Stay in control.</p>
         <a href="#contact" class="cta-button">Contact me</a>
         <p class="cta-subtitle">For Driving Schools</p>
       </div>
@@ -42,118 +43,150 @@
         <section id="services" class="services">
           <h2>Our Services</h2>
           <div class="faq-container">
-            <div class="service-item">
-              <div class="service-header border-custom">
+            <div class="service-item border-custom border-b-custom">
+              <div class="service-header">
                 <div class="service-title">Lessons Scheduling</div>
                 <div class="service-toggle">
-                  <img class="plus-width" src="./assets/plus.png" alt="" />
+                  <img class="plus-width" src="./assets/plus.png" alt="+" />
                 </div>
               </div>
               <div class="service-content">
-                Easily schedule, reschedule, or cancel lessons anytime. Stay
-                organized with real-time calendar sync and reminders.
+                Students and instructors often face miscommunication, double
+                bookings, or missed lessons. Our app introduces a shared smart
+                calendar with real-time updates—so every lesson is confirmed,
+                clear, and stress-free.
               </div>
             </div>
-            <div class="service-item">
+
+            <div class="service-item border-b-custom">
               <div class="service-header">
                 <div class="service-title">Everything in One Place</div>
                 <div class="service-toggle">
-                  <img class="plus-width" src="./assets/plus.png" alt="" />
+                  <img class="plus-width" src="./assets/plus.png" alt="+" />
                 </div>
               </div>
               <div class="service-content">
-                Manage students, schedules, payments, and lesson history—all
-                from one easy-to-use dashboard.
+                No more juggling between apps, calls, and messages. Our platform
+                combines scheduling, chat, and location sharing into one app
+                —making every lesson easy to plan, confirm, and manage.
               </div>
             </div>
-            <div class="service-item">
+
+            <div class="service-item border-b-custom">
               <div class="service-header">
                 <div class="service-title">Growth with Clarity</div>
                 <div class="service-toggle">
-                  <img class="plus-width" src="./assets/plus.png" alt="" />
+                  <img class="plus-width" src="./assets/plus.png" alt="+" />
                 </div>
               </div>
               <div class="service-content">
-                Track progress, set goals, and analyze performance with clear
-                metrics to help your tutoring business grow.
+                Driving school owners struggle to track student progress or
+                instructor performance. Our Analytics dashboard gives access to
+                performance metrics that generate more revenue.
               </div>
             </div>
           </div>
         </section>
 
         <!-- Story Section -->
-        <section id="about" class="story">
-          <img
-            src="assets/story.png"
-            alt="Sunset silhouette"
-            class="story-image"
-          />
-          <div class="story-content">
-            <h2>The Story Behind ND</h2>
-            <p class="story-subtitle">( NextDrive )</p>
-            <p>
+        <div class="story-wrapper">
+          <section id="about" class="story">
+            <img src="assets/story.png"
+              alt="Sunset silhouette"
+              class="story-image"/>
+            <div class="story-content">
+              <h2>The Story Behind ND</h2>
+              <p class="story-subtitle">( NextDrive )</p>
+              <p>
               I'm a solo founder who built this platform after seeing how messy
               and outdated scheduling and communication can be in driving
               schools...
-            </p>
-            <p>
+              </p>
+              <p>
               With no background noise, no investor pressure — just focus — I
               set out to solve a real problem: making life easier for students,
-              instructors, and owners.
-            </p>
-            <p>
-              Everything you see was designed, coded, planned and brought to
+              instructors, and owners. Everything you see was designed, coded, planned and brought to
               life by me.
-            </p>
-            <p>
+              </p>
+              
+              <p>
               Maybe even if it doesn't look like it, it was incredibly difficult
               and complicated to do all this. In the end, I had to learn
               everything from scratch, but it was worth it because now I can see
               what I've done so far and I think I can be proud of myself. But
               this doesn't mean I'm done, quite the opposite, this is just the
               beginning.
-            </p>
-            <button class="more-button">More About me</button>
-          </div>
-        </section>
+              </p>
+              <button class="more-button"><span>More About me</span> </button>
+            </div>
+          </section>
+        </div>
+
       </div>
       <!-- Social Section -->
       <section class="social-section">
-        <h2 class="social-title">Follow Us • Follow Us</h2>
+        <div class="slide-text">
+          <span class="social-title">Follow Us • Follow Us • </span>
+
+          <span class="social-title">Follow Us • Follow Us • </span>
+
+          <span class="social-title">Follow Us • Follow Us • </span>
+        </div>
+
         <div class="social-icons">
-          <a href="#" class="social-icon"
-            ><img src="./assets/Youtube.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/Mail.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/Map pin.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/Twitter.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/Facebook.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/Instagram.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/image 1.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/image 2.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/Github.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/Linkedin.png" alt=""
-          /></a>
-          <a href="#" class="social-icon"
-            ><img src="./assets/Home.png" alt=""
-          /></a>
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@Next-DriveApp" class="social-icon" target="_blank" rel="noopener">
+            <img src="./assets/Youtube.png" alt="YouTube" />
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:next@nextdrive.app" class="social-icon">
+            <img src="./assets/Mail.png" alt="Email" />
+          </a>
+
+          <!-- Map -->
+          <a href="https://g.co/kgs/V4Yfzeg" class="social-icon" target="_blank" rel="noopener">
+            <img src="./assets/Map pin.png" alt="Google Profile" />
+          </a>
+
+          <!-- Twitter (now X) -->
+          <a href="https://x.com/NextDrive_app" class="social-icon" target="_blank" rel="noopener">
+            <img src="./assets/Twitter.png" alt="Twitter" />
+          </a>
+
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/profile.php?id=61577839736977" class="social-icon" target="_blank" rel="noopener">
+            <img src="./assets/Facebook.png" alt="Facebook" />
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/YourUsername" class="social-icon" target="_blank" rel="noopener">
+            <img src="./assets/Instagram.png" alt="Instagram" />
+          </a>
+
+          <!-- Google PLAY -->
+          <a href="https://your.custom.link1" class="social-icon" target="_blank" rel="noopener">
+            <img src="./assets/image 1.png" alt="Custom 1" />
+          </a>
+          <!-- APP STORE -->
+          <a href="https://your.custom.link2" class="social-icon" target="_blank" rel="noopener">
+            <img src="./assets/image 2.png" alt="Custom 2" />
+          </a>
+
+          <!-- GitHub -->
+          <a href="https://github.com/Drawe404" class="social-icon" target="_blank" rel="noopener">
+            <img src="./assets/Github.png" alt="GitHub" />
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/YourUsername" class="social-icon" target="_blank" rel="noopener">
+            <img src="./assets/Linkedin.png" alt="LinkedIn" />
+          </a>
+
+          <!-- Homepage -->
+          <a href="#hero" class="social-icon">
+            <img src="./assets/Home.png" alt="Home" />
+          </a>
         </div>
       </section>
 
@@ -180,13 +213,59 @@
             <input type="tel" placeholder="Phone number (optional)" />
             <textarea placeholder="Message" required></textarea>
             <div class="form-submit">
-              <button type="submit" class="submit-button">SEND</button>
+            <button type="submit" class="send-button">
+              SEND
+              <div class="star-1">
+                <svg viewBox="0 0 784.11 815.53" xmlns="http://www.w3.org/2000/svg">
+                  <path class="fil0" d="M392.05 0c-20.9,210.08-184.06,378.41-392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93-210.06 184.09-378.37 392.05-407.74-207.98-29.38-371.16-197.69-392.06-407.78z"/>
+                </svg>
+              </div>
+              <div class="star-2">
+                <svg viewBox="0 0 784.11 815.53" xmlns="http://www.w3.org/2000/svg">
+                  <path class="fil0" d="M392.05 0c-20.9,210.08-184.06,378.41-392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93-210.06 184.09-378.37 392.05-407.74-207.98-29.38-371.16-197.69-392.06-407.78z"/>
+                </svg>
+              </div>
+              <div class="star-3">
+                <svg viewBox="0 0 784.11 815.53" xmlns="http://www.w3.org/2000/svg">
+                  <path class="fil0" d="M392.05 0c-20.9,210.08-184.06,378.41-392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93-210.06 184.09-378.37 392.05-407.74-207.98-29.38-371.16-197.69-392.06-407.78z"/>
+                </svg>
+              </div>
+              <div class="star-4">
+                <svg viewBox="0 0 784.11 815.53" xmlns="http://www.w3.org/2000/svg">
+                  <path class="fil0" d="M392.05 0c-20.9,210.08-184.06,378.41-392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93-210.06 184.09-378.37 392.05-407.74-207.98-29.38-371.16-197.69-392.06-407.78z"/>
+                </svg>
+              </div>
+              <div class="star-5">
+                <svg viewBox="0 0 784.11 815.53" xmlns="http://www.w3.org/2000/svg">
+                  <path class="fil0" d="M392.05 0c-20.9,210.08-184.06,378.41-392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93-210.06 184.09-378.37 392.05-407.74-207.98-29.38-371.16-197.69-392.06-407.78z"/>
+                </svg>
+              </div>
+              <div class="star-6">
+                <svg viewBox="0 0 784.11 815.53" xmlns="http://www.w3.org/2000/svg">
+                  <path class="fil0" d="M392.05 0c-20.9,210.08-184.06,378.41-392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93-210.06 184.09-378.37 392.05-407.74-207.98-29.38-371.16-197.69-392.06-407.78z"/>
+                </svg>
+              </div>
+            </button>
               <span class="reply-note">I usually reply within 1 day</span>
             </div>
           </form>
+
+          <script>
+            const button = document.querySelector('.send-button');
+            let clicked = false;
+
+            button.addEventListener('click', () => {
+              if (!clicked) {
+                button.classList.add('clicked-once');
+                clicked = true;}});
+            </script>
         </section>
       </div>
     </div>
+
+    
+
+    
 
     <!-- Wavy Border -->
     <div class="wavy-border"></div>
