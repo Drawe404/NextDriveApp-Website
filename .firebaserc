@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "website-nextdrive"
+  },
+  "targets": {},
+  "etags": {
+    "website-nextdrive": {
+      "extensionInstances": {}
+    }
+  }
+}
