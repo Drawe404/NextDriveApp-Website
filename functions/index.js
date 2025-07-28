@@ -17,7 +17,7 @@ const TELEGRAM_CHAT_ID = defineString("TELEGRAM_CHAT_ID");
 exports.submitContact = onRequest(
   { memory: "256MB", timeoutSeconds: 30, cors: true, invoker: "public" },
   async (req, res) => {
-    // !! ZMĚNA: Transporter se vytváří až tady, při spuštění funkce !!
+    // Transporter se vytváří až tady, při spuštění funkce
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
