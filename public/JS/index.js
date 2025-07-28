@@ -1,15 +1,16 @@
 // Firebase imports
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+//import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // Firebase config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyC2xx3EGFbFk_L9qyxxR5vB6XBEErYA--U",
   authDomain: "website-nextdrive.firebaseapp.com",
-  projectId: "nextdatabase",
-  storageBucket: "nextdatabase.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  projectId: "website-nextdrive",
+  storageBucket: "website-nextdrive.firebasestorage.app",
+  messagingSenderId: "188086077103",
+  appId: "1:188086077103:web:5a08409b3a3afa8c57765a"
 };
 
 // Initialize Firebase
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      await addDoc(collection(db, "website-form"), data);
+      await addDoc(collection(db, "form-table"), data);
       alert("Form submitted successfully!");
       form.reset();
     } catch (err) {

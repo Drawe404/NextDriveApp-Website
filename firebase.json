@@ -16,17 +16,6 @@
         "firebase-debug.*.log",
         "*.local"
       ]
-    },
-    {
-      "source": "codebase",
-      "codebase": "nextdrive_codebase",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
-      ]
     }
   ],
   "hosting": {

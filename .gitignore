@@ -7,3 +7,4 @@ Thumbs.db
 
 # Environment files (if added later)
 .env
+node_modules
