@@ -25,15 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const data = {
       "1_Timestamp": serverTimestamp(),
-      "2_Name": {
+      "2_Name": 
+      {
         FirstName: form.firstName.value,
-        LastName: form.lastName.value,
-        "3_Email": form.email.value,
-        "4_Phone": form.phone.value,
-        "5_Msg": form.message.value,
-        "6_userAgent": navigator.userAgent,
-        "7_reffered": document.referrer || "Direct"
-      }
+        LastName: form.lastName.value
+      },
+      "3_Email": form.email.value,
+      "4_Phone": form.phone.value,
+      "5_Msg": form.message.value,
+      "6_userAgent": navigator.userAgent,
+      "7_reffered": document.referrer || "Direct"
     };
 
     try {

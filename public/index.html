@@ -209,12 +209,12 @@
 
           <form id="contactForm" class="contact-form">
             <div class="form-row">
-              <input type="text" placeholder="First Name" required />
-              <input type="text" placeholder="Last Name" required />
+              <input type="text" placeholder="First Name" required name="firstName" /> 
+              <input type="text" placeholder="Last Name" required name="lastName" />   
             </div>
-            <input type="email" placeholder="Email" required />
-            <input type="tel" placeholder="Phone number (optional)" />
-            <textarea placeholder="Message" required></textarea>
+            <input type="email" placeholder="Email" required name="email" />
+            <input type="tel" placeholder="Phone number (optional)" name="phone" />
+            <textarea placeholder="Message" required name="message"></textarea>
             <div class="form-submit">
             <button type="submit" class="send-button" id="sendButton">
               SEND
