@@ -74,9 +74,10 @@ exports.submitContact = onRequest(
 
       // Odeslání e-mailu (používá data z původního req.body pro text, ale je to funkční)
       await transporter.sendMail({
-        from: `"NextDrive Contact" <${GMAIL_USER.value()}>`,
-        to: "nextdrive@nextdrive.app",
-        subject: "New Contact Form Submission",
+        from: `"NextDrive Contact" <${GMAIL_USER.value()}>`, // Z TVÉHO účtu
+        replyTo: `${fullName} <${email}>`, // <----- DŮLEŽITÉ: ZDE JE ZMĚNA! Nastaví email odesílatele formuláře pro funkci "Odpovědět"
+        to: "nextdrive@nextdrive.app", // Tvoje adresa, kam to má přijít
+        subject: `New Contact Form from ${fullName} (${email})`, // <----- VOLITELNÁ ZMĚNA: Předmět e-mailu pro lepší přehled
         html: `
           <p><strong>Name:</strong> ${fullName}</p>
           <p><strong>Email:</strong> ${email}</p>
