@@ -1,20 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-// Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyC2xx3EGFbFk_L9qyxxR5vB6XBEErYA--U",
-  authDomain: "website-nextdrive.firebaseapp.com",
-  projectId: "website-nextdrive",
-  storageBucket: "website-nextdrive.firebasestorage.app",
-  messagingSenderId: "188086077103",
-  appId: "1:188086077103:web:5a08409b3a3afa8c57765a"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 // Form submission handler
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
@@ -23,10 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const data = {
-      "1_Timestamp": serverTimestamp(),
-      "2_Name": 
-      {
+    // Data
+    const dataToSend = { 
+      "1_Timestamp": null, // Timestamp bude generovat Cloud Function, takže zde posíláme 'null'
+      "2_Name": {
         FirstName: form.firstName.value,
         LastName: form.lastName.value
       },
@@ -37,13 +20,37 @@ document.addEventListener("DOMContentLoaded", () => {
       "7_reffered": document.referrer || "Direct"
     };
 
+    const button = document.querySelector(".send-button");
+
     try {
-      await addDoc(collection(db, "form-table"), data);
-      alert("Form submitted successfully!");
+      const cloudFunctionUrl = "https://europe-west1-website-nextdrive.cloudfunctions.net/submitContact"; // Zkontroluj URL!
+
+      const response = await fetch(cloudFunctionUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataToSend),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to submit form via Cloud Function. Contact through socials");
+      }
+
+      const result = await response.json();
+      console.log("Formulář úspěšně odeslán přes Cloud Function:", result);
+
       form.reset();
+      setTimeout(() => {
+        if (button) { 
+          button.classList.remove("clicked-once");
+        }
+      }, 8000);
+
     } catch (err) {
-      console.error("Error writing document:", err);
-      alert("Something went wrong. Try again later.");
+      console.error("Chyba při odesílání formuláře:", err);
+      alert("An error occurred while submitting the form. Please try again later, refresh the page, or contact me via social media.");
     }
   });
 });

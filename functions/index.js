@@ -17,7 +17,6 @@ const TELEGRAM_CHAT_ID = defineString("TELEGRAM_CHAT_ID");
 exports.submitContact = onRequest(
   { memory: "256MB", timeoutSeconds: 30, cors: true, invoker: "public" },
   async (req, res) => {
-    // Transporter se vytváří až tady, při spuštění funkce
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -37,27 +36,43 @@ exports.submitContact = onRequest(
     res.set("Access-Control-Allow-Origin", "*");
 
     if (req.method !== "POST") {
-      return res.status(405).send("Only POST allowed");
+      return res.status(405).send("Only POST allowed lol");
     }
 
-    const { firstName, lastName, email, phone, message } = req.body;
+    // PŘÍJÍMÁME data přesně tak, jak je posílá frontend.
+    // POZOR: req.body bude obsahovat:
+    // { "1_Timestamp": null, "2_Name": { FirstName: ..., LastName: ... }, "3_Email": ..., ... }
+    const { "2_Name": nameData, "3_Email": email, "4_Phone": phone, "5_Msg": message } = req.body;
 
-    if (!firstName || !email || !message) {
+    // Kontrola požadovaných polí (upraveno pro nové názvy)
+    if (!nameData || !nameData.FirstName || !email || !message) {
       return res
         .status(400)
         .send("Missing required fields: firstName, email, message.");
     }
 
-    const fullName = `${firstName || ""} ${lastName || ""}`.trim();
+    // Sestavíme fullName z dat přijatých z frontendu
+    const fullName = `${nameData.FirstName || ""} ${nameData.LastName || ""}`.trim();
 
     try {
-      await admin.firestore().collection("form-table").add({
-        Timestamp: admin.firestore.FieldValue.serverTimestamp(),
-        firstName, lastName, email, phone, message,
-        userAgent: req.headers["user-agent"] || "",
-        referred: req.headers.referer || "Direct",
-      });
+      // Vytvoříme objekt, který PŘESNĚ odpovídá formátu pro databázi
+      const dataForFirestore = {
+        "1_Timestamp": admin.firestore.FieldValue.serverTimestamp(), // Serverový timestamp
+        "2_Name": {
+          FirstName: nameData.FirstName,
+          LastName: nameData.LastName
+        },
+        "3_Email": email,
+        "4_Phone": phone || "N/A", // Pokud phone není, ulož "N/A"
+        "5_Msg": message,
+        "6_userAgent": req.headers["user-agent"] || "", // Získáváme z hlaviček požadavku
+        "7_reffered": req.headers.referer || "Direct", // Získáváme z hlaviček požadavku
+      };
 
+      // Uložíme data do Firestore v požadovaném formátu
+      await admin.firestore().collection("form-table").add(dataForFirestore);
+
+      // Odeslání e-mailu (používá data z původního req.body pro text, ale je to funkční)
       await transporter.sendMail({
         from: `"NextDrive Contact" <${GMAIL_USER.value()}>`,
         to: "nextdrive@nextdrive.app",
@@ -70,11 +85,12 @@ exports.submitContact = onRequest(
         `,
       });
 
+      // Odeslání zprávy přes Telegram bota (používá data z původního req.body pro text, ale je to funkční)
       await axios.post(
         `https://api.telegram.org/bot${TELEGRAM_TOKEN.value()}/sendMessage`,
         {
           chat_id: TELEGRAM_CHAT_ID.value(),
-          text: `📬 New message from ${fullName}\\n📧 ${email}\\n📞 ${phone || "N/A"}\\n📝 ${message}`,
+          text: `📬 New message from ${fullName}\n📧 ${email}\n📞 ${phone || "N/A"}\n📝 ${message}`,
         }
       );
 
