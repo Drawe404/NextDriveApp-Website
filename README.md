@@ -22,7 +22,7 @@ NextDrive is revolution in Driving school industry
 
 ### Video
  
-![](img for readme/video.mp4)
+![](readmeAssets/video.mp4 )
 
 <!--  
 Add your screenshots here when ready!  
@@ -57,7 +57,7 @@ or GIF showing app in action
 - JS fancy cursor or animations
 - Firebase (your database)
 
-![](img for readme/Screen.png) 
+![](readmeAssets/Screen.png) 
 
 ## Author
 

@@ -77,16 +77,15 @@ exports.submitContact = onRequest(
         from: `"NextDrive Contact" <${GMAIL_USER.value()}>`, // Z TVÉHO účtu
         replyTo: `${fullName} <${email}>`, // <----- DŮLEŽITÉ: ZDE JE ZMĚNA! Nastaví email odesílatele formuláře pro funkci "Odpovědět"
         to: "nextdrive@nextdrive.app", // Tvoje adresa, kam to má přijít
-        subject: `New Contact Form from ${fullName} (${email})`, // <----- VOLITELNÁ ZMĚNA: Předmět e-mailu pro lepší přehled
+        subject: `❗Client Contact from❗ ${fullName} (${email})`, // <----- VOLITELNÁ ZMĚNA: Předmět e-mailu pro lepší přehled
         html: `
-          <p><strong>Name:</strong> ${fullName}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-          <p><strong>Message:</strong><br>${message}</p>
+          <p><strong>📬Name:</strong> ${fullName}</p>
+          <p><strong>📧Email:</strong> ${email}</p>
+          <p><strong>📞Phone:</strong> ${phone || "N/A"}</p>
+          <p><strong>📝Message:</strong><br>${message}</p>
         `,
       });
-
-      // Odeslání zprávy přes Telegram bota (používá data z původního req.body pro text, ale je to funkční)
+      
       await axios.post(
         `https://api.telegram.org/bot${TELEGRAM_TOKEN.value()}/sendMessage`,
         {
