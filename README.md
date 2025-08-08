@@ -14,15 +14,12 @@ NextDrive is revolution in Driving school industry
 - [Links](#links)
 - [Built with](#built-with)
 - [Author](#author)
-- [Installation](#installation)
-- [License](#license)
-- [Support](#support)
 
 <div align="center">
 
 ### Video
  
-![](readmeAssets/video.mp4 )
+
 
 <!--  
 Add your screenshots here when ready!  
@@ -43,6 +40,8 @@ or GIF showing app in action
 *Screenshot coming soon!*
 
 </div>
+
+![](readmeAssets/video.mp4)
 
 ### Links
 

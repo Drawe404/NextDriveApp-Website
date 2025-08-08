@@ -4,7 +4,9 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Roboto";
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  /* Avoid triggering font animations */
+  transition: background-color 1.3s ease, color 1.3s ease;
   background-color: #e0e0db;
 }
 
@@ -20,6 +22,7 @@ img {
 
 /* Hero Section */
 .hero {
+  background-color: #253551;
   background: url(../assets/hero-bg.png);
   background-size: cover;
   background-position: center;
@@ -32,6 +35,7 @@ img {
 }
 
 .nav {
+  user-select: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,6 +82,7 @@ img {
 }
 
 .hero-content {
+  user-select: none;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -88,6 +93,59 @@ img {
   z-index: 1;
   padding-bottom: 240px;
 }
+
+.language-selector {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.language-selected {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #fff;
+}
+
+.language-arrow {
+  font-size: 0.6em;
+}
+
+.language-options {
+  user-select: none;
+  display: none;
+  position: absolute;
+  top: 180%;
+  right: -40%;
+  background-color:#fff;
+  border-radius: 15px;
+  padding: 7px 0;
+  min-width: 120px;
+  z-index: 1000;
+}
+
+.language-option {
+  padding: 8px 12px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-option:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.language-selector.active .language-options {
+  display: block;
+}
+
+.language-flag {
+  width: 20px;
+  height: auto;
+  border-radius: 2px;
+}
+
 
 .hero h1 {
   font-size: 4rem;
@@ -261,7 +319,7 @@ img {
 
 .story-image {
   width: 100%;
-  height: 600px;
+  height: 700px;
   border-radius: 15px;
   object-fit: cover;
 }

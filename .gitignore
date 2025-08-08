@@ -10,3 +10,5 @@ Thumbs.db
 node_modules
 
 .env.website-nextdrive
+
+text.txt
