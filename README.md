@@ -17,6 +17,10 @@ NextDrive is revolution in Driving school industry
 
 <div align="center">
 
+### The Website: =>  
+
+[nextdrive.app](https://nextdrive.app)
+
 ### Video
  
 
@@ -37,11 +41,11 @@ Example:
 or GIF showing app in action  
 -->
 
-*Screenshot coming soon!*
+*More coming soon!*
 
 </div>
 
-![](readmeAssets/video.mp4)
+https://youtu.be/6gnlIorJIXM?si=UntrORE_vzL85lMQ
 
 ### Links
 
@@ -54,13 +58,13 @@ or GIF showing app in action
 - Visual code studio (HTML)
 - CSS (styles)
 - JS fancy cursor or animations
-- Firebase (your database)
+- Firebase (database)
 
 ![](readmeAssets/Screen.png) 
 
 ## Author
 
-- Website – [nextdrive.app](https://nextdrive.app)  
+- whatsupp – [Whatsupp me](https://wa.me/420725970999)  
 - GitHub – [Drawe404](https://github.com/Drawe404)  
 - Email – nextdrive@nextdrive.app
 
