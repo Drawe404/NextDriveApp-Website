@@ -661,6 +661,7 @@ textarea {
     text-align: center;
     padding: 0 5%;
     height: 100%;
+    padding-bottom: 100px;
   }
   .hero h1 {
     font-size: 2.8rem;
