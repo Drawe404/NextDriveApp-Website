@@ -167,7 +167,7 @@ const translations = {
     ctaButton: "Contact me",
     ctaSubtitle: "For Driving Schools",
     // Services
-    servicesTitle: "Our Services",
+    servicesTitle: "My App",
     service1Title: "Lessons Scheduling",
     service1Content:
       "Complicated groupchats or writing in chat? Constant calls to people and a million contacts in your phone? Planning rides for the next week in notes or a notebook? God forbid someone cancels a ride. Our platform solves all these problems conveniently in one application.",
@@ -220,7 +220,7 @@ const translations = {
     ctaButton: "Kontaktuj mě",
     ctaSubtitle: "Pro autoškoly",
     // Services
-    servicesTitle: "Naše Služby",
+    servicesTitle: "Moje Aplikace",
     service1Title: "Plánování lekcí",
     service1Content:
       "Složité tvoření skupin nebo psaní do chatu? Neustálé volaní lidem a milion kontaktů v mobilu? Plánování jízd na další týden v poznámkách nebo sešitu? Nedej bože, aby někdo zrušil jízdu. Naše platforma řeší všechny tyto problémy pohodlně v jedné aplikaci.",

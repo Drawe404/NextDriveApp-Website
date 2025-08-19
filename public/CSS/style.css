@@ -286,8 +286,8 @@ img {
   font-weight: bold;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
   color: #2a2829;
+  margin: 0 0 10px 0;
 }
 
 .services .faq-container {
